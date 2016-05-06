@@ -19,7 +19,7 @@ endfu
 
 function! s:refreshView()
     let bufnr = expand('<bufnr>')
-    call s:system("curl --noproxy localhost,127.0.0.1 -X PUT -T - http://localhost:8090/ &>/dev/null &",
+    call s:system("curl --noproxy localhost,127.0.0.1 -X PUT -T - http://localhost:8090/ &>/dev/null",
                 \ s:bufGetContents(bufnr))
 endfu
 
@@ -44,7 +44,7 @@ function! s:popBuffer(bufnr)
 endfu
 
 function! s:killDaemon()
-    call system("curl --noproxy localhost,127.0.0.1 -s -X DELETE http://localhost:8090/ &>/dev/null &")
+    call system("curl --noproxy localhost,127.0.0.1 -s -X DELETE http://localhost:8090/ &>/dev/null")
 endfu
 
 function! s:bufGetContents(bufnr)
